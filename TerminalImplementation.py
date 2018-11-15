@@ -3,8 +3,8 @@ from Constants import suits, valid_values
 
 def getValuesFromInput(str_card):
     while True:
-        r_input = input(str_card +" as VALUE, SUIT: ")
-        split_array = r_input.split(", ")
+        r_input = input(str_card +" as VALUE,SUIT: ")
+        split_array = r_input.split(",")
         if len(split_array) != 2:
             continue
         value, suit = split_array

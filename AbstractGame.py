@@ -1,4 +1,5 @@
-from CorePoker import Card, Deck
+from CorePoker import Deck
+from CorePoker import HelperCard as Card
 from HandValue import handStrength
 import pandas
 
@@ -29,7 +30,7 @@ class Game:
             suit_string = 's'
         lookup_string = str(bigger.value) + '-' + str(smaller.value) + '-' + suit_string
         self.win_prob = self.preflop[lookup_string].iloc[0]
-    
+
     def dealPockets(self, value1, suit1, value2, suit2):
         card1 = Card(value1, suit1)
         card2 = Card(value2, suit2)
@@ -47,11 +48,15 @@ class Game:
         self.board.append(card)
         if len(self.board) >= 3:
             self.hand_strength = handStrength(self.myHand, self.board)
+            self.win_prob = winProbability(self.myHand, self.board, self.deck.deck)
 
         
     def isDone(self):
         return len(self.board) == 5
 
+    def computerState(self):
+        return {"hand":self.myHand, "board": self.board, "win_prob":self.win_prob, "hand_strength":self.hand_strength}
+    
     def __str__(self):
         stringified = []
         stringified.append("Your Hand\n")

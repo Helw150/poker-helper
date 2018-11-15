@@ -1,9 +1,8 @@
 from Constants import suits, named_cards, named_cards_reverse
+from deuces import Card
 
-class Card:
+class HelperCard:
     def __init__(self, value, suit):
-        value = value
-        suit = suit
         self.print_value = value
         if value in named_cards.keys():
             value = named_cards[value]
@@ -11,9 +10,10 @@ class Card:
             self.print_value = named_cards_reverse[value]
         self.suit = suit
         self.value = int(value)
-
+        self.internal = Card.new(self.print_value.upper() + suit[0])
+        
     def __str__(self):
-        return str(self.print_value) +' '+ str(self.suit)
+        return Card.int_to_pretty_str(self.internal)
 
     def __repr__(self):
         return self.__str__()
@@ -23,7 +23,7 @@ class Deck:
         self.deck = []
         for value in range(1,14):
             for suit in suits:
-                self.deck.append(Card(str(value), str(suit)))
+                self.deck.append(HelperCard(str(value), str(suit)))
     
     def viewCard(self, viewedCard):
         for i, card in enumerate(self.deck):
