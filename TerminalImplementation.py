@@ -1,5 +1,6 @@
 from AbstractGame import Game
 from Constants import suits, valid_values
+import os
 
 def getValuesFromInput(str_card):
     while True:
@@ -15,14 +16,18 @@ def getValuesFromInput(str_card):
         else:
             print("Malformed Input - try again")
 while True:
+    os.system('clear')
     num_players = int(input("How many players? "))
     game = Game(num_players)
     first_value, first_suit = getValuesFromInput("First Pocket")
     second_value, second_suit = getValuesFromInput("Second Pocket")
     game.dealPockets(first_value, first_suit, second_value, second_suit)
+    os.system('clear')
     print(game)
     while not game.isDone():
         next_value, next_suit =  getValuesFromInput("Next Dealt Card")
         game.placeToBoard(next_value, next_suit)
+        os.system('clear')
         print(game)
+    input("Hit Enter When Finished")
         

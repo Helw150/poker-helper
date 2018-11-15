@@ -1,6 +1,6 @@
 from CorePoker import Deck
 from CorePoker import HelperCard as Card
-from HandValue import handStrength
+from HandValue import handStrength, winProbability
 import pandas
 
 class Game:

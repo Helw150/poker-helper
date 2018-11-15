@@ -24,7 +24,6 @@ class Deck:
         for value in range(1,14):
             for suit in suits:
                 self.deck.append(HelperCard(str(value), str(suit)))
-    
     def viewCard(self, viewedCard):
         for i, card in enumerate(self.deck):
             if card.value == viewedCard.value and card.suit == viewedCard.suit:
