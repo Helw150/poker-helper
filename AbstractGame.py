@@ -48,7 +48,7 @@ class Game:
         self.board.append(card)
         if len(self.board) >= 3:
             self.hand_strength = handStrength(self.myHand, self.board)
-            self.win_prob = winProbability(self.myHand, self.board, self.deck.deck)
+            self.win_prob = winProbability(self.myHand, self.board, self.deck.deck, self.num_players)
 
         
     def isDone(self):
